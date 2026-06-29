@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { org, quickActions, waterQuality } from "@/lib/content";
+import { org, quickActions, waterQuality, rates, faqs, alertNotice, boardMeetings } from "@/lib/content";
 import {
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
   ArrowRightIcon,
+  DocumentIcon,
   quickActionIcon,
 } from "@/components/icons";
 
@@ -14,7 +15,8 @@ export const metadata = { title: `${org.name} — Pay your water bill online` };
 
 const nav = [
   { label: "Pay Bill", href: "/pay" },
-  { label: "Services", href: "#services" },
+  { label: "Rates", href: "#rates" },
+  { label: "Documents", href: "#documents" },
   { label: "Water Quality", href: "#quality" },
   { label: "Contact", href: "#contact" },
 ];
@@ -23,6 +25,15 @@ const nav = [
 export default function ModernLightHome() {
   return (
     <div className="min-h-screen bg-stone-50 text-neutral-700">
+      {/* Service notice */}
+      {alertNotice.active && (
+        <div className="bg-neutral-900 text-neutral-100">
+          <div className="mx-auto flex max-w-6xl items-start gap-3 px-6 py-2.5 text-sm">
+            <span className="mt-0.5 text-xs font-bold uppercase tracking-[0.15em] text-cyan-400">{alertNotice.label}</span>
+            <p className="text-neutral-300">{alertNotice.message}</p>
+          </div>
+        </div>
+      )}
       {/* Utility bar */}
       <div className="hidden border-b border-neutral-200 bg-white md:block">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2 text-xs text-neutral-500">
@@ -123,6 +134,77 @@ export default function ModernLightHome() {
                   </div>
                 ))}
               </dl>
+            </div>
+          </div>
+        </section>
+
+        {/* Rates */}
+        <section id="rates" className="border-t border-neutral-200 bg-white">
+          <div className="mx-auto max-w-4xl px-6 py-20">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-700">Billing</p>
+            <h2 className="mt-2 font-serif text-4xl font-semibold text-neutral-900">Rates &amp; fees</h2>
+            <table className="mt-8 w-full border border-neutral-200 text-left text-sm">
+              <thead>
+                <tr className="border-b border-neutral-200 text-xs uppercase tracking-wide text-neutral-500">
+                  <th className="px-5 py-3.5 font-semibold">Charge</th>
+                  <th className="hidden px-5 py-3.5 font-semibold sm:table-cell">Detail</th>
+                  <th className="px-5 py-3.5 text-right font-semibold">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rates.map((r) => (
+                  <tr key={r.label} className="border-b border-neutral-200 last:border-0">
+                    <td className="px-5 py-3.5 font-medium text-neutral-900">{r.label}</td>
+                    <td className="hidden px-5 py-3.5 text-neutral-500 sm:table-cell">{r.detail}</td>
+                    <td className="px-5 py-3.5 text-right font-semibold text-cyan-700">{r.amount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Documents & reports */}
+        <section id="documents" className="border-t border-neutral-200">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-700">Members</p>
+            <h2 className="mt-2 font-serif text-4xl font-semibold text-neutral-900">Documents &amp; reports</h2>
+            <div className="mt-8 grid gap-px border border-neutral-200 bg-neutral-200 md:grid-cols-3">
+              {[
+                { t: `${waterQuality.reportYear} Water Quality Report`, s: "Consumer Confidence Report (CCR)" },
+                { t: "Board Meeting Minutes", s: boardMeetings.cadence },
+                { t: "Rate Schedule & Bylaws", s: "Current rates and association bylaws" },
+              ].map((d) => (
+                <a key={d.t} href="#contact" className="group flex items-start gap-4 bg-white p-7 transition hover:bg-stone-50">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-cyan-50 text-cyan-700 transition group-hover:bg-neutral-900 group-hover:text-white">
+                    <DocumentIcon className="h-6 w-6" />
+                  </span>
+                  <span>
+                    <span className="block font-serif text-lg font-semibold text-neutral-900">{d.t}</span>
+                    <span className="mt-1 block text-sm text-neutral-500">{d.s}</span>
+                    <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-cyan-700">Download <ArrowRightIcon className="h-4 w-4" /></span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="border-t border-neutral-200 bg-white">
+          <div className="mx-auto max-w-4xl px-6 py-20">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-700">Questions</p>
+            <h2 className="mt-2 font-serif text-4xl font-semibold text-neutral-900">Frequently asked</h2>
+            <div className="mt-8 border-t border-neutral-200">
+              {faqs.map((f) => (
+                <details key={f.q} className="group border-b border-neutral-200">
+                  <summary className="flex cursor-pointer list-none items-center justify-between py-5 font-serif text-lg font-medium text-neutral-900">
+                    {f.q}
+                    <span className="text-cyan-700 transition group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="pb-5 text-sm text-neutral-600">{f.a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
