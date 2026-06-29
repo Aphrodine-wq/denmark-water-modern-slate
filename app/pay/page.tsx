@@ -5,7 +5,7 @@ import Link from "next/link";
 import { org } from "@/lib/content";
 import { DEMO_ACCOUNT_NUMBER, DEMO_LAST_NAME } from "@/lib/mockAccounts";
 import { usePortalFlow, formatCurrency } from "@/lib/usePortalFlow";
-import { DropletIcon, CheckIcon, CardIcon, ArrowRightIcon, ShieldIcon } from "@/components/icons";
+import { CheckIcon, CardIcon, ArrowRightIcon, ShieldIcon } from "@/components/icons";
 
 // Light editorial payment portal — off-white, near-black, cyan accent, sharp corners.
 export default function ModernLightPortal() {
@@ -17,12 +17,7 @@ export default function ModernLightPortal() {
     <div className="min-h-screen bg-stone-50 text-neutral-700">
       <header className="border-b border-neutral-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-8 w-8 items-center justify-center bg-neutral-900 text-white">
-              <DropletIcon className="h-5 w-5" />
-            </span>
-            <span className="font-serif text-sm font-semibold text-neutral-900">{org.name}</span>
-          </Link>
+          <Link href="/" className="font-serif text-sm font-semibold text-neutral-900">{org.name}</Link>
           <Link href="/" className="text-sm text-neutral-500 hover:text-neutral-900">← Back to site</Link>
         </div>
       </header>

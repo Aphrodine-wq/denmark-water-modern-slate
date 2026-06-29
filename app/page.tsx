@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { org, quickActions, waterQuality } from "@/lib/content";
 import {
-  DropletIcon,
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
   ArrowRightIcon,
   quickActionIcon,
 } from "@/components/icons";
+
+const actionHref: Record<string, string> = { pay: "/pay", leak: "/report-leak", service: "/start-stop" };
 
 export const metadata = { title: `${org.name} — Pay your water bill online` };
 
@@ -36,12 +37,7 @@ export default function ModernLightHome() {
       {/* Header */}
       <header className="sticky top-0 z-30 border-b border-neutral-200 bg-stone-50/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center bg-neutral-900 text-white">
-              <DropletIcon className="h-5 w-5" />
-            </span>
-            <span className="font-serif text-lg font-semibold text-neutral-900">{org.name}</span>
-          </Link>
+          <Link href="/" className="font-serif text-xl font-semibold text-neutral-900">{org.name}</Link>
           <nav className="hidden items-center gap-9 lg:flex">
             {nav.map((n) => (
               <a key={n.label} href={n.href} className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900">
@@ -76,9 +72,9 @@ export default function ModernLightHome() {
               >
                 Pay My Bill <ArrowRightIcon className="h-6 w-6" />
               </Link>
-              <a href="#contact" className="inline-flex items-center gap-2 border border-neutral-300 px-8 py-5 text-base font-semibold text-neutral-900 transition hover:border-neutral-900">
+              <Link href="/report-leak" className="inline-flex items-center gap-2 border border-neutral-300 px-8 py-5 text-base font-semibold text-neutral-900 transition hover:border-neutral-900">
                 Report a Leak
-              </a>
+              </Link>
             </div>
           </div>
           <div className="relative min-h-[280px] md:min-h-full">
@@ -92,7 +88,7 @@ export default function ModernLightHome() {
             <div className="grid gap-px border border-neutral-200 bg-neutral-200 md:grid-cols-3">
               {quickActions.map((a) => {
                 const Icon = quickActionIcon[a.key as keyof typeof quickActionIcon];
-                const href = a.href === "pay" ? "/pay" : "#contact";
+                const href = actionHref[a.key] ?? "#contact";
                 return (
                   <Link key={a.key} href={href} className="group flex items-start gap-4 bg-white p-7 transition hover:bg-stone-50">
                     <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-cyan-50 text-cyan-700 transition group-hover:bg-neutral-900 group-hover:text-white">
