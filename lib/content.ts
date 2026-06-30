@@ -39,7 +39,7 @@ export const quickActions: QuickAction[] = [
   {
     key: "pay",
     title: "Pay My Bill",
-    desc: "View your balance and pay online in under a minute.",
+    desc: "View your balance and pay online anytime, day or night.",
     href: "pay",
     primary: true,
   },

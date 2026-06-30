@@ -86,7 +86,7 @@ export default function ModernLightHome() {
               {org.tagline}
             </h1>
             <p className="mt-6 max-w-md text-lg text-neutral-600">
-              Pay your water bill online in under a minute — no account to create, no trip to the office.
+              Pay your water bill online anytime — just have your account number ready.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Link
@@ -227,7 +227,7 @@ export default function ModernLightHome() {
             <div className="flex flex-col items-start justify-between gap-10 border border-neutral-900 bg-stone-50 p-10 md:flex-row md:items-center md:p-14">
               <div>
                 <h2 className="font-serif text-4xl font-semibold text-neutral-900">Ready to pay your bill?</h2>
-                <p className="mt-2 max-w-sm text-neutral-600">It takes about a minute. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-cyan-700 underline-offset-2 hover:underline">{org.phone}</a>.</p>
+                <p className="mt-2 max-w-sm text-neutral-600">Have your account number ready. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-cyan-700 underline-offset-2 hover:underline">{org.phone}</a>.</p>
               </div>
               <Link href="/pay" className="inline-flex items-center gap-2.5 bg-neutral-900 px-10 py-5 text-xl font-bold text-white transition hover:bg-neutral-700">
                 Pay My Bill <ArrowRightIcon className="h-6 w-6" />
