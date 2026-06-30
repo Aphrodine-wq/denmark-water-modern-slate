@@ -1,11 +1,14 @@
 import Link from "next/link";
-import { org, quickActions, waterQuality, rates, faqs, alertNotice, boardMeetings } from "@/lib/content";
+import { org, quickActions, waterQuality, rates, faqs, alertNotice, boardMeetings, leakCheck, boilWater, conservationTips, assistance } from "@/lib/content";
 import {
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
   ArrowRightIcon,
   DocumentIcon,
+  CheckIcon,
+  LeakIcon,
+  ShieldIcon,
   quickActionIcon,
 } from "@/components/icons";
 
@@ -18,6 +21,7 @@ const nav = [
   { label: "Rates", href: "#rates" },
   { label: "Documents", href: "#documents" },
   { label: "Water Quality", href: "#quality" },
+  { label: "Help", href: "#resources" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -217,6 +221,55 @@ export default function ModernLightHome() {
                   <p className="pb-5 text-sm text-neutral-600">{f.a}</p>
                 </details>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Helpful resources */}
+        <section id="resources" className="border-t border-neutral-200">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-700">Member help</p>
+            <h2 className="mt-2 font-serif text-4xl font-semibold text-neutral-900">Helpful for members</h2>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="border border-neutral-200 bg-white p-7">
+                <h3 className="flex items-center gap-2 font-serif text-xl font-semibold text-neutral-900">
+                  <LeakIcon className="h-5 w-5 text-cyan-700" /> {leakCheck.title}
+                </h3>
+                <p className="mt-2 text-sm text-neutral-600">{leakCheck.intro}</p>
+                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-neutral-700 marker:font-semibold marker:text-cyan-700">
+                  {leakCheck.steps.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
+                <p className="mt-4 text-xs text-neutral-600">{leakCheck.note}</p>
+              </div>
+              <div className="border border-neutral-200 bg-white p-7">
+                <h3 className="flex items-center gap-2 font-serif text-xl font-semibold text-neutral-900">
+                  <ShieldIcon className="h-5 w-5 text-cyan-700" /> {boilWater.title}
+                </h3>
+                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-neutral-700 marker:font-semibold marker:text-cyan-700">
+                  {boilWater.steps.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
+                <p className="mt-4 text-xs text-neutral-600">{boilWater.note}</p>
+              </div>
+            </div>
+            <div className="mt-6 border border-neutral-200 bg-white p-7">
+              <h3 className="font-serif text-xl font-semibold text-neutral-900">Save water, save money</h3>
+              <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                {conservationTips.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5 text-sm text-neutral-700">
+                    <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-cyan-700" /> {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6 bg-neutral-900 p-7 text-white">
+              <h3 className="flex items-center gap-2 font-serif text-xl font-semibold text-white">
+                <PhoneIcon className="h-5 w-5 text-cyan-400" /> {assistance.title}
+              </h3>
+              <p className="mt-2 text-sm text-neutral-300">{assistance.body}</p>
             </div>
           </div>
         </section>

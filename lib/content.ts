@@ -115,21 +115,87 @@ export const boardMeetings = {
 export const faqs: { q: string; a: string }[] = [
   {
     q: "When is my bill due?",
-    a: "Bills are mailed on the 1st and due by the 20th of each month. A late penalty applies after the due date.",
+    a: "Bills are mailed at the start of each month and are due by the 20th. A late penalty is added after the due date.",
   },
   {
     q: "How do I find my account number?",
-    a: "Your account number is printed at the top of your paper bill, just above your service address.",
+    a: "It's printed at the top of your paper bill, just above your service address. You'll need it to pay online.",
   },
   {
-    q: "What payment methods do you accept?",
-    a: "Online card payments, in-office cash or check, and mailed checks. Autopay enrollment is available online.",
+    q: "What are all the ways I can pay?",
+    a: "Online by card or e-check through the BBI EzPay portal, in person with cash or check, by mail, by phone during office hours, or in the after-hours drop box. Autopay and paperless billing can be set up in the portal.",
   },
   {
-    q: "Who do I call after hours for an emergency?",
-    a: `Call our emergency line at ${org.emergencyPhone} for main breaks, outages, or water-quality emergencies.`,
+    q: "My bill is higher than usual — could I have a leak?",
+    a: "Very possibly. A silent running toilet can waste hundreds of gallons a day. Turn off every faucet and appliance, then look at your meter — if the dial is still moving, you likely have a leak between the meter and the house.",
+  },
+  {
+    q: "What should I do during a boil-water notice?",
+    a: "Bring tap water to a rolling boil for one full minute before drinking, cooking, making ice, brushing teeth, or washing produce. Let it cool before use. We'll post the notice here and let you know the moment it's lifted.",
+  },
+  {
+    q: "Why is my water cloudy or discolored?",
+    a: "It's usually temporary after hydrant flushing or a repair. Run a cold tap for a few minutes to clear it. If it doesn't clear, or there's an odor, call the office.",
+  },
+  {
+    q: "How do I start, stop, or transfer service?",
+    a: "Use the Start / Stop Service form or call the office. New accounts need a photo ID, the service address, and a refundable deposit.",
+  },
+  {
+    q: "What happens if I pay late?",
+    a: "A late penalty is added after the 20th. If the balance stays unpaid, service may be disconnected, and a reconnection fee applies to restore it — so call us before the due date if you're behind.",
+  },
+  {
+    q: "Is help available if I can't afford my bill?",
+    a: "You may qualify for the Low Income Household Water Assistance Program (LIHWAP) or local aid. Call the office before your due date and we'll point you to current programs.",
+  },
+  {
+    q: "Is my water safe to drink?",
+    a: `Yes. We test continuously for bacteria, lead, nitrates, and disinfection levels and publish the results each year in our Consumer Confidence Report. The most recent ${waterQuality.reportYear} report shows zero violations.`,
+  },
+  {
+    q: "How do I report a leak or main break?",
+    a: `Use Report a Leak anytime, or call our emergency line at ${org.emergencyPhone} for a main break, no water, or a water-quality emergency.`,
   },
 ];
+
+// Evergreen, accurate member-help content. Safe for any rural water system;
+// swap specifics (programs, contacts) for the association's own when known.
+export const leakCheck = {
+  title: "Think you have a leak?",
+  intro: "Leaks are the #1 reason for a surprise-high bill. Here's a two-minute check:",
+  steps: [
+    "Turn off every faucet, appliance, and water-using device in the home.",
+    "Find your water meter (usually near the street in a covered box) and note the dial position.",
+    "Wait 20–30 minutes without using any water, then check the meter again.",
+    "If the dial moved, water is escaping somewhere — most often a running toilet, a dripping faucet, or an underground line.",
+  ],
+  note: "A toilet flapper that won't seal can waste 200+ gallons a day. Fixing it is usually a few dollars.",
+} as const;
+
+export const boilWater = {
+  title: "During a boil-water notice",
+  steps: [
+    "Bring tap water to a rolling boil and keep it boiling for one full minute.",
+    "Let it cool before drinking, cooking, making ice, brushing teeth, or washing produce.",
+    "Use boiled or bottled water for pets, too.",
+    "Throw out ice made during the notice; run your icemaker again only after it's lifted.",
+  ],
+  note: "We post the notice at the top of this site and let you know as soon as the water is cleared for normal use.",
+} as const;
+
+export const conservationTips = [
+  "Fix running toilets and dripping faucets quickly — they're the biggest silent water wasters.",
+  "Water the lawn early morning or evening so less evaporates.",
+  "Run the dishwasher and washing machine only with full loads.",
+  "Keep a pitcher of water in the fridge instead of running the tap until it's cold.",
+  "Check outdoor spigots and hoses for slow drips, especially after winter.",
+] as const;
+
+export const assistance = {
+  title: "Need help with your bill?",
+  body: "If money is tight, call the office before your due date. You may qualify for the Low Income Household Water Assistance Program (LIHWAP) or other local assistance, and we can often set up a short payment arrangement to keep your water on.",
+} as const;
 
 // Card/e-check fee is set by BBI EzPay and shown to the member inside EzPay
 // before they confirm — Denmark Water keeps none of it. Copy below is shown on
