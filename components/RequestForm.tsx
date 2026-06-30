@@ -50,7 +50,7 @@ export default function RequestForm({ kind }: { kind: Kind }) {
       <header className="border-b border-neutral-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
           <Link href="/" className="font-serif text-base font-semibold text-neutral-900">{org.name}</Link>
-          <Link href="/" className="text-sm text-neutral-500 hover:text-neutral-900">← Back to site</Link>
+          <Link href="/" className="text-sm text-neutral-600 hover:text-neutral-900">← Back to site</Link>
         </div>
       </header>
 

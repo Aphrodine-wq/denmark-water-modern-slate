@@ -36,7 +36,7 @@ export default function ModernLightHome() {
       )}
       {/* Utility bar */}
       <div className="hidden border-b border-neutral-200 bg-white md:block">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2 text-xs text-neutral-500">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2 text-xs text-neutral-600">
           <span className="flex items-center gap-2"><MapPinIcon className="h-3.5 w-3.5" /> {org.address}</span>
           <span className="flex items-center gap-5">
             <span className="flex items-center gap-2"><ClockIcon className="h-3.5 w-3.5" /> {org.officeHours}</span>
@@ -119,7 +119,7 @@ export default function ModernLightHome() {
                     </span>
                     <span>
                       <span className="block font-serif text-lg font-semibold text-neutral-900">{a.title}</span>
-                      <span className="mt-1 block text-sm text-neutral-500">{a.desc}</span>
+                      <span className="mt-1 block text-sm text-neutral-600">{a.desc}</span>
                     </span>
                   </Link>
                 );
@@ -142,7 +142,7 @@ export default function ModernLightHome() {
                 {[["0", "Violations"], ["100%", "Standards met"], [org.membersServed, "Served"]].map(([k, v]) => (
                   <div key={v}>
                     <dt className="font-serif text-3xl font-semibold text-neutral-900">{k}</dt>
-                    <dd className="mt-0.5 text-sm text-neutral-500">{v}</dd>
+                    <dd className="mt-0.5 text-sm text-neutral-600">{v}</dd>
                   </div>
                 ))}
               </dl>
@@ -157,7 +157,7 @@ export default function ModernLightHome() {
             <h2 className="mt-2 font-serif text-4xl font-semibold text-neutral-900">Rates &amp; fees</h2>
             <table className="mt-8 w-full border border-neutral-200 text-left text-sm">
               <thead>
-                <tr className="border-b border-neutral-200 text-xs uppercase tracking-wide text-neutral-500">
+                <tr className="border-b border-neutral-200 text-xs uppercase tracking-wide text-neutral-600">
                   <th className="px-5 py-3.5 font-semibold">Charge</th>
                   <th className="hidden px-5 py-3.5 font-semibold sm:table-cell">Detail</th>
                   <th className="px-5 py-3.5 text-right font-semibold">Amount</th>
@@ -167,7 +167,7 @@ export default function ModernLightHome() {
                 {rates.map((r) => (
                   <tr key={r.label} className="border-b border-neutral-200 last:border-0">
                     <td className="px-5 py-3.5 font-medium text-neutral-900">{r.label}</td>
-                    <td className="hidden px-5 py-3.5 text-neutral-500 sm:table-cell">{r.detail}</td>
+                    <td className="hidden px-5 py-3.5 text-neutral-600 sm:table-cell">{r.detail}</td>
                     <td className="px-5 py-3.5 text-right font-semibold text-cyan-700">{r.amount}</td>
                   </tr>
                 ))}
@@ -193,7 +193,7 @@ export default function ModernLightHome() {
                   </span>
                   <span>
                     <span className="block font-serif text-lg font-semibold text-neutral-900">{d.t}</span>
-                    <span className="mt-1 block text-sm text-neutral-500">{d.s}</span>
+                    <span className="mt-1 block text-sm text-neutral-600">{d.s}</span>
                     <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-cyan-700">Download <ArrowRightIcon className="h-4 w-4" /></span>
                   </span>
                 </a>
@@ -240,7 +240,7 @@ export default function ModernLightHome() {
       <footer className="border-t border-neutral-200 bg-white py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm md:flex-row">
           <span className="font-serif font-semibold text-neutral-900">{org.name}</span>
-          <span className="text-neutral-500">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-neutral-900">{org.phone}</a></span>
+          <span className="text-neutral-600">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-neutral-900">{org.phone}</a></span>
           <span className="text-neutral-600">© {waterQuality.reportYear}</span>
         </div>
       </footer>

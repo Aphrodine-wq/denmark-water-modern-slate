@@ -70,7 +70,7 @@ export default function ModernLightPortal() {
           <div className="relative mt-4 overflow-hidden border border-neutral-200 bg-white">
             {!loaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-white">
-                <span className="flex items-center gap-3 text-sm text-neutral-500">
+                <span className="flex items-center gap-3 text-sm text-neutral-600">
                   <span className="h-5 w-5 animate-spin rounded-full border-2 border-neutral-300 border-t-cyan-700" />
                   Loading secure payment portal…
                 </span>
