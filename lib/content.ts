@@ -8,12 +8,16 @@ export const org = {
   established: 1968,
   tagline: "Clean, reliable water for our community.",
   serviceArea: "Denmark and surrounding rural communities",
-  phone: "(803) 555-0142",
-  emergencyPhone: "(803) 555-0199",
+  phone: "(601) 555-0142",
+  emergencyPhone: "(601) 555-0199",
   email: "office@denmarkwater.org",
-  address: "112 Main Street, Denmark, SC 29042",
+  address: "112 Main Street, Denmark, MS 39071",
   officeHours: "Mon–Fri, 8:00 AM – 5:00 PM",
   membersServed: "2,400+ households",
+  // BBI EzPay hosted bill-pay portal. SWAP for Denmark Water's entity-specific
+  // EzPay link once BBI confirms it (ask BBI for the direct billing-entity URL).
+  // The Pay My Bill page embeds this URL in an iframe + offers it as a new-tab link.
+  ezpayUrl: "https://www.msezpay.com/",
 } as const;
 
 export const alertNotice = {
