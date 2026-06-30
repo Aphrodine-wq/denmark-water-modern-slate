@@ -54,7 +54,7 @@ export default function RequestForm({ kind }: { kind: Kind }) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-2xl px-5 py-12">
+      <main id="main" className="mx-auto max-w-2xl px-5 py-12">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-700">{c.eyebrow}</p>
         <h1 className="mt-1 font-serif text-4xl font-semibold text-neutral-900">{c.title}</h1>
 
@@ -78,16 +78,16 @@ export default function RequestForm({ kind }: { kind: Kind }) {
               <div className="mt-5 grid gap-4">
                 <label className="block">
                   <span className="text-sm font-medium text-neutral-700">Full name</span>
-                  <input className={`mt-1.5 ${field()}`} value={name} onChange={(e) => setName(e.target.value)} placeholder="Jane Doe" />
+                  <input className={`mt-1.5 ${field()}`} value={name} onChange={(e) => setName(e.target.value)} placeholder="Jane Doe" required />
                 </label>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="block">
                     <span className="text-sm font-medium text-neutral-700">Phone</span>
-                    <input className={`mt-1.5 ${field()}`} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(803) 555-0000" inputMode="tel" />
+                    <input className={`mt-1.5 ${field()}`} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(601) 555-0000" inputMode="tel" required />
                   </label>
                   <label className="block">
                     <span className="text-sm font-medium text-neutral-700">Service address</span>
-                    <input className={`mt-1.5 ${field()}`} value={address} onChange={(e) => setAddress(e.target.value)} placeholder="123 County Road" />
+                    <input className={`mt-1.5 ${field()}`} value={address} onChange={(e) => setAddress(e.target.value)} placeholder="123 County Road" required />
                   </label>
                 </div>
 
@@ -115,7 +115,7 @@ export default function RequestForm({ kind }: { kind: Kind }) {
           )}
         </div>
 
-        <p className="mt-4 flex items-center justify-center gap-2 text-xs text-neutral-400">
+        <p className="mt-4 flex items-center justify-center gap-2 text-xs text-neutral-600">
           <ShieldIcon className="h-4 w-4" /> Demo only — this request is not sent anywhere.
         </p>
       </main>

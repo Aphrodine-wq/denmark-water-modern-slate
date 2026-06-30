@@ -27,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
-      <body>{children}</body>
+      <body>
+        <a href="#main" className="sr-only skip-link">Skip to main content</a>
+        {children}
+      </body>
     </html>
   );
 }

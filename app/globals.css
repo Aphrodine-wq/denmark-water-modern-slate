@@ -16,3 +16,53 @@ body {
 }
 
 /* Each concept controls its own colors locally; no global theme. */
+
+/* Accessibility: a clear, high-contrast keyboard focus indicator on every
+   interactive element (WCAG 2.4.7 / 2.4.11). Mouse clicks don't trigger it. */
+:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Visually-hidden utility for skip links until focused. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
+  padding: 0.75rem 1.25rem;
+  background: #1d4ed8;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.5rem;
+}
+
+/* Respect users who ask for less motion (WCAG 2.3.3 / 2.2.2). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

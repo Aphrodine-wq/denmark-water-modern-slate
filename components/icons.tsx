@@ -10,6 +10,10 @@ const base = {
   strokeWidth: 1.6,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
+  // Icons are decorative and always paired with visible text, so hide them from
+  // assistive tech. A caller can override by passing aria-hidden={false}.
+  "aria-hidden": true,
+  focusable: "false" as const,
 };
 
 export function DropletIcon(props: IconProps) {

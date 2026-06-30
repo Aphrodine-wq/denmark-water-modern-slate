@@ -77,7 +77,7 @@ export default function ModernLightHome() {
         </div>
       </div>
 
-      <main>
+      <main id="main">
         {/* Split hero */}
         <section className="mx-auto grid max-w-7xl items-stretch gap-0 md:grid-cols-2">
           <div className="flex flex-col justify-center px-6 py-16 md:px-12 md:py-28">
@@ -241,7 +241,7 @@ export default function ModernLightHome() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm md:flex-row">
           <span className="font-serif font-semibold text-neutral-900">{org.name}</span>
           <span className="text-neutral-500">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-neutral-900">{org.phone}</a></span>
-          <span className="text-neutral-400">© {waterQuality.reportYear}</span>
+          <span className="text-neutral-600">© {waterQuality.reportYear}</span>
         </div>
       </footer>
     </div>
