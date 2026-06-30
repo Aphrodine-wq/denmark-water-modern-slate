@@ -130,3 +130,17 @@ export const faqs: { q: string; a: string }[] = [
     a: `Call our emergency line at ${org.emergencyPhone} for main breaks, outages, or water-quality emergencies.`,
   },
 ];
+
+// Card/e-check fee is set by BBI EzPay and shown to the member inside EzPay
+// before they confirm — Denmark Water keeps none of it. Copy below is shown on
+// the Pay My Bill page so the fee is never a surprise (the #1 utility complaint).
+export const payment = {
+  feeNote:
+    "Paying by card or e-check adds a small processor fee set by our bill-pay provider (BBI EzPay). The exact amount is shown before you confirm, and Denmark Water keeps none of it.",
+  otherWays: [
+    { method: "In person", detail: "Cash or check at the office during office hours." },
+    { method: "By mail", detail: "Mail a check to the office address. Allow 3–5 business days." },
+    { method: "After-hours drop box", detail: "Sealed checks only, at the office front door." },
+    { method: "By phone", detail: "Call the office during business hours to pay by card." },
+  ],
+} as const;

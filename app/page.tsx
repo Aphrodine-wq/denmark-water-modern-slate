@@ -65,6 +65,18 @@ export default function ModernLightHome() {
         </div>
       </header>
 
+      {/* Mobile quick bar — tap-to-call + section nav (desktop gets the utility bar + full nav). */}
+      <div className="border-b border-neutral-200 bg-white lg:hidden">
+        <div className="flex items-center gap-1 overflow-x-auto px-4 py-2 text-sm">
+          <a href={`tel:${org.phone}`} className="flex shrink-0 items-center gap-1.5 bg-cyan-50 px-3 py-1.5 font-semibold text-cyan-800">
+            <PhoneIcon className="h-4 w-4" /> Call office
+          </a>
+          {nav.filter((n) => n.href.startsWith("#")).map((n) => (
+            <a key={n.label} href={n.href} className="shrink-0 px-3 py-1.5 font-medium text-neutral-600">{n.label}</a>
+          ))}
+        </div>
+      </div>
+
       <main>
         {/* Split hero */}
         <section className="mx-auto grid max-w-7xl items-stretch gap-0 md:grid-cols-2">
@@ -215,7 +227,7 @@ export default function ModernLightHome() {
             <div className="flex flex-col items-start justify-between gap-10 border border-neutral-900 bg-stone-50 p-10 md:flex-row md:items-center md:p-14">
               <div>
                 <h2 className="font-serif text-4xl font-semibold text-neutral-900">Ready to pay your bill?</h2>
-                <p className="mt-2 max-w-sm text-neutral-600">It takes about a minute. Questions? Call the office at {org.phone}.</p>
+                <p className="mt-2 max-w-sm text-neutral-600">It takes about a minute. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-cyan-700 underline-offset-2 hover:underline">{org.phone}</a>.</p>
               </div>
               <Link href="/pay" className="inline-flex items-center gap-2.5 bg-neutral-900 px-10 py-5 text-xl font-bold text-white transition hover:bg-neutral-700">
                 Pay My Bill <ArrowRightIcon className="h-6 w-6" />
@@ -228,7 +240,7 @@ export default function ModernLightHome() {
       <footer className="border-t border-neutral-200 bg-white py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm md:flex-row">
           <span className="font-serif font-semibold text-neutral-900">{org.name}</span>
-          <span className="text-neutral-500">{org.address} · {org.phone}</span>
+          <span className="text-neutral-500">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-neutral-900">{org.phone}</a></span>
           <span className="text-neutral-400">© {waterQuality.reportYear}</span>
         </div>
       </footer>
