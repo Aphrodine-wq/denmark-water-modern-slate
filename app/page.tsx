@@ -19,6 +19,7 @@ import {
 const actionHref: Record<string, string> = { pay: "/pay", leak: "/report-leak", service: "/start-stop" };
 
 export const metadata = { title: `${org.name} — Pay your water bill online` };
+export const dynamic = "force-dynamic";
 
 const navGroups = [
   {
