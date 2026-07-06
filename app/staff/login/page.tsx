@@ -37,6 +37,24 @@ export default function StaffLogin() {
     }
   }
 
+  async function skipSignIn() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/staff/dev-skip-login", { method: "POST" });
+      if (!res.ok) {
+        setError("Dev skip isn't available here.");
+        return;
+      }
+      router.push("/staff/dashboard");
+      router.refresh();
+    } catch {
+      setError("Couldn't reach the server — check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-stone-50 px-5">
       <div className="w-full max-w-sm">
@@ -88,6 +106,17 @@ export default function StaffLogin() {
           >
             {loading ? "Signing in…" : "Sign in"}
           </button>
+
+          {process.env.NODE_ENV !== "production" && (
+            <button
+              type="button"
+              onClick={skipSignIn}
+              disabled={loading}
+              className="mt-3 w-full border border-dashed border-neutral-300 px-4 py-2.5 text-sm font-semibold text-neutral-700 transition hover:bg-stone-50 disabled:opacity-50"
+            >
+              Skip sign in (dev only)
+            </button>
+          )}
         </form>
 
         <Link
