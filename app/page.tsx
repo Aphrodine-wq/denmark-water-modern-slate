@@ -5,6 +5,7 @@ import {
   MapPinIcon,
   ClockIcon,
   ArrowRightIcon,
+  ChevronDownIcon,
   DocumentIcon,
   CheckIcon,
   LeakIcon,
@@ -17,8 +18,26 @@ const actionHref: Record<string, string> = { pay: "/pay", leak: "/report-leak", 
 
 export const metadata = { title: `${org.name} — Pay your water bill online` };
 
-const nav = [
-  { label: "Pay Bill", href: "/pay" },
+const navGroups = [
+  {
+    label: "Services",
+    items: [
+      { label: "Pay My Bill", href: "/pay" },
+      { label: "Report a Leak", href: "/report-leak" },
+      { label: "Start / Stop Service", href: "/start-stop" },
+    ],
+  },
+  {
+    label: "Billing & Water",
+    items: [
+      { label: "Rates & Fees", href: "#rates" },
+      { label: "Documents", href: "#documents" },
+      { label: "Water Quality", href: "#quality" },
+    ],
+  },
+];
+
+const mobileLinks = [
   { label: "Rates", href: "#rates" },
   { label: "Documents", href: "#documents" },
   { label: "Water Quality", href: "#quality" },
@@ -56,12 +75,24 @@ export default function ModernLightHome() {
             <Logo accent="#171717" className="h-9 w-9 shrink-0" />
             {org.name}
           </Link>
-          <nav className="hidden items-center gap-9 lg:flex">
-            {nav.map((n) => (
-              <a key={n.label} href={n.href} className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900">
-                {n.label}
-              </a>
+          <nav className="hidden items-center gap-1 lg:flex">
+            {navGroups.map((group) => (
+              <div key={group.label} className="group relative">
+                <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-neutral-600 transition hover:text-neutral-900">
+                  {group.label} <ChevronDownIcon className="h-3.5 w-3.5 transition group-hover:rotate-180" />
+                </button>
+                <div className="invisible absolute left-0 top-full z-40 w-56 translate-y-1 border border-neutral-200 bg-white py-1.5 opacity-0 shadow-lg transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  {group.items.map((item) => (
+                    <a key={item.label} href={item.href} className="block px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-stone-50 hover:text-cyan-700">
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
             ))}
+            <a href="#contact" className="px-3 py-2 text-sm font-medium text-neutral-600 transition hover:text-neutral-900">
+              Contact
+            </a>
           </nav>
           <Link
             href="/pay"
@@ -78,7 +109,7 @@ export default function ModernLightHome() {
           <a href={`tel:${org.phone}`} className="flex shrink-0 items-center gap-1.5 bg-cyan-50 px-3 py-1.5 font-semibold text-cyan-800">
             <PhoneIcon className="h-4 w-4" /> Call office
           </a>
-          {nav.filter((n) => n.href.startsWith("#")).map((n) => (
+          {mobileLinks.map((n) => (
             <a key={n.label} href={n.href} className="shrink-0 px-3 py-1.5 font-medium text-neutral-600">{n.label}</a>
           ))}
         </div>
