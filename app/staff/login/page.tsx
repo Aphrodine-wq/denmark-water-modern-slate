@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { org } from "@/lib/content";
+import { Logo } from "@/components/icons";
 
 export default function StaffLogin() {
   const router = useRouter();
@@ -36,41 +39,64 @@ export default function StaffLogin() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-stone-50 px-5">
-      <form onSubmit={submit} className="w-full max-w-sm bg-white p-8 shadow-sm">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-700">Staff</p>
-        <h1 className="mt-1 font-serif text-2xl font-semibold text-neutral-900">Sign in</h1>
-
-        <label className="mt-6 block">
-          <span className="text-sm font-medium text-neutral-700">Email</span>
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1.5 w-full bg-stone-100 px-3.5 py-2.5 text-neutral-900 outline-none transition focus:ring-2 focus:ring-cyan-200"
-          />
-        </label>
-        <label className="mt-4 block">
-          <span className="text-sm font-medium text-neutral-700">Password</span>
-          <input
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-1.5 w-full bg-stone-100 px-3.5 py-2.5 text-neutral-900 outline-none transition focus:ring-2 focus:ring-cyan-200"
-          />
-        </label>
-
-        {error && <p className="mt-3 text-sm font-semibold text-red-600">{error}</p>}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="mt-6 w-full bg-neutral-900 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-neutral-700 disabled:opacity-50"
+      <div className="w-full max-w-sm">
+        <Link
+          href="/"
+          className="mb-8 flex items-center justify-center gap-2.5 font-serif text-lg font-semibold text-neutral-900"
         >
-          {loading ? "Signing in…" : "Sign in"}
-        </button>
-      </form>
+          <Logo accent="#171717" className="h-8 w-8 shrink-0" />
+          {org.shortName}
+        </Link>
+
+        <form onSubmit={submit} className="bg-white p-8 shadow-sm">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-700">Staff portal</p>
+          <h1 className="mt-1 font-serif text-2xl font-semibold text-neutral-900">Sign in</h1>
+
+          <label className="mt-6 block">
+            <span className="text-sm font-medium text-neutral-700">Email</span>
+            <input
+              type="email"
+              autoComplete="username"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1.5 w-full bg-stone-100 px-3.5 py-2.5 text-neutral-900 outline-none transition focus:ring-2 focus:ring-cyan-200"
+            />
+          </label>
+          <label className="mt-4 block">
+            <span className="text-sm font-medium text-neutral-700">Password</span>
+            <input
+              type="password"
+              autoComplete="current-password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-1.5 w-full bg-stone-100 px-3.5 py-2.5 text-neutral-900 outline-none transition focus:ring-2 focus:ring-cyan-200"
+            />
+          </label>
+
+          {error && (
+            <p className="mt-4 border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm font-medium text-red-700">
+              {error}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="mt-6 w-full bg-neutral-900 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-neutral-700 disabled:opacity-50"
+          >
+            {loading ? "Signing in…" : "Sign in"}
+          </button>
+        </form>
+
+        <Link
+          href="/"
+          className="mt-5 block text-center text-sm font-medium text-neutral-600 transition hover:text-cyan-700"
+        >
+          ← Back to site
+        </Link>
+      </div>
     </div>
   );
 }

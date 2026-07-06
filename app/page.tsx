@@ -79,7 +79,6 @@ export default async function ModernLightHome() {
             <span className="flex items-center gap-2"><ClockIcon className="h-3.5 w-3.5" /> {org.officeHours}</span>
             <a href={`tel:${org.phone}`} className="flex items-center gap-2 font-semibold text-cyan-700"><PhoneIcon className="h-3.5 w-3.5" /> {org.phone}</a>
             <a href={`tel:${org.emergencyPhone}`} className="flex items-center gap-2 font-semibold text-neutral-900">Emergency: {org.emergencyPhone}</a>
-            <Link href="/staff/login" className="font-semibold text-cyan-700 underline underline-offset-2">Staff Sign In</Link>
           </span>
         </div>
       </div>
@@ -110,12 +109,20 @@ export default async function ModernLightHome() {
               Contact
             </a>
           </nav>
-          <Link
-            href="/pay"
-            className="bg-neutral-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-neutral-700"
-          >
-            Pay My Bill
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/staff/login"
+              className="hidden px-4 py-2.5 text-sm font-semibold text-neutral-600 transition hover:text-cyan-700 sm:inline-flex"
+            >
+              Staff Sign In
+            </Link>
+            <Link
+              href="/pay"
+              className="bg-neutral-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-neutral-700"
+            >
+              Pay My Bill
+            </Link>
+          </div>
         </div>
       </header>
 
