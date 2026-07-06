@@ -77,6 +77,7 @@ export default async function ModernLightHome() {
           <span className="flex items-center gap-5">
             <span className="flex items-center gap-2"><ClockIcon className="h-3.5 w-3.5" /> {org.officeHours}</span>
             <a href={`tel:${org.phone}`} className="flex items-center gap-2 font-semibold text-cyan-700"><PhoneIcon className="h-3.5 w-3.5" /> {org.phone}</a>
+            <a href={`tel:${org.emergencyPhone}`} className="flex items-center gap-2 font-semibold text-neutral-900">Emergency: {org.emergencyPhone}</a>
           </span>
         </div>
       </div>
@@ -135,11 +136,7 @@ export default async function ModernLightHome() {
             <h1 className="font-serif text-5xl font-semibold leading-[1.02] tracking-tight text-neutral-900 md:text-6xl">
               {org.tagline}
             </h1>
-            <p className="mt-6 max-w-md text-lg text-neutral-600">
-              Serving {org.serviceArea} since {org.established}. Main break or no water? Call our emergency line at{" "}
-              <a href={`tel:${org.emergencyPhone}`} className="font-semibold text-neutral-900 underline underline-offset-2">{org.emergencyPhone}</a>, anytime.
-            </p>
-            <div className="mt-9 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/pay"
                 className="inline-flex items-center gap-2.5 bg-neutral-900 px-10 py-5 text-xl font-bold text-white transition hover:bg-neutral-700"
