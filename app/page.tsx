@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { org, quickActions, waterQuality, rates, faqs, alertNotice as staticAlertNotice, boardMeetings, board, leakCheck, boilWater, conservationTips, assistance } from "@/lib/content";
+import { org, quickActions, waterQuality, rates, faqs, alertNotice as staticAlertNotice, boardMeetings, leakCheck, boilWater, conservationTips, assistance } from "@/lib/content";
 import { getNotice, listDocuments } from "@/lib/staffData";
 import { DatabaseNotConfiguredError } from "@/lib/db";
 import {
@@ -36,7 +36,6 @@ const navGroups = [
       { label: "Rates & Fees", href: "#rates" },
       { label: "Documents", href: "#documents" },
       { label: "Water Quality", href: "#quality" },
-      { label: "Board & Governance", href: "#board" },
     ],
   },
 ];
@@ -45,7 +44,6 @@ const mobileLinks = [
   { label: "Rates", href: "#rates" },
   { label: "Documents", href: "#documents" },
   { label: "Water Quality", href: "#quality" },
-  { label: "Board", href: "#board" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -326,28 +324,6 @@ export default async function ModernLightHome() {
                 <PhoneIcon className="h-5 w-5 text-cyan-400" /> {assistance.title}
               </h3>
               <p className="mt-2 text-sm text-neutral-300">{assistance.body}</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Board & governance */}
-        <section id="board" className="bg-white">
-          <div className="mx-auto max-w-4xl px-6 py-20">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-700">Governance</p>
-            <h2 className="mt-2 font-serif text-4xl font-semibold text-neutral-900">Board of directors</h2>
-            <p className="mt-3 max-w-2xl text-neutral-600">
-              Denmark Water is member-owned and run by a volunteer board elected from the community. {boardMeetings.note}
-            </p>
-            <ul className="mt-8 grid gap-px bg-neutral-200 sm:grid-cols-2">
-              {board.map((m) => (
-                <li key={m.name} className="bg-white p-5">
-                  <span className="block font-serif text-lg font-semibold text-neutral-900">{m.name}</span>
-                  <span className="mt-0.5 block text-sm text-neutral-600">{m.role}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 bg-stone-50 p-5 text-sm text-neutral-600">
-              <strong className="text-neutral-900">Meetings:</strong> {boardMeetings.cadence} — {boardMeetings.location}
             </div>
           </div>
         </section>
