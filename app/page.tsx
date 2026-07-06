@@ -21,7 +21,6 @@ const nav = [
   { label: "Rates", href: "#rates" },
   { label: "Documents", href: "#documents" },
   { label: "Water Quality", href: "#quality" },
-  { label: "Help", href: "#resources" },
   { label: "Contact", href: "#contact" },
 ];
 
