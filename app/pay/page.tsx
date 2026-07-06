@@ -14,7 +14,7 @@ export default function ModernLightPortal() {
 
   return (
     <div className="min-h-screen bg-stone-50 text-neutral-700">
-      <header className="border-b border-neutral-200 bg-white">
+      <header className="border-b border-neutral-200 bg-white shadow-sm">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-4">
           <Link href="/" className="flex items-center gap-2 font-serif text-sm font-semibold text-neutral-900">
             <Logo accent="#171717" className="h-7 w-7 shrink-0" />
