@@ -13,7 +13,6 @@ import {
   LeakIcon,
   ShieldIcon,
   Logo,
-  quickActionIcon,
 } from "@/components/icons";
 
 const actionHref: Record<string, string> = { pay: "/pay", leak: "/report-leak", service: "/start-stop" };
@@ -165,17 +164,11 @@ export default async function ModernLightHome() {
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="grid gap-px bg-neutral-200 md:grid-cols-3">
               {quickActions.map((a) => {
-                const Icon = quickActionIcon[a.key as keyof typeof quickActionIcon];
                 const href = actionHref[a.key] ?? "#contact";
                 return (
-                  <Link key={a.key} href={href} className="group flex items-start gap-4 bg-white p-7 transition hover:bg-stone-50">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-cyan-50 text-cyan-700 transition group-hover:bg-neutral-900 group-hover:text-white">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <span>
-                      <span className="block font-serif text-lg font-semibold text-neutral-900">{a.title}</span>
-                      <span className="mt-1 block text-sm text-neutral-600">{a.desc}</span>
-                    </span>
+                  <Link key={a.key} href={href} className="group flex items-center justify-between bg-white p-7 transition hover:bg-stone-50">
+                    <span className="font-serif text-lg font-semibold text-neutral-900">{a.title}</span>
+                    <ArrowRightIcon className="h-5 w-5 shrink-0 text-cyan-700 transition group-hover:translate-x-1" />
                   </Link>
                 );
               })}
