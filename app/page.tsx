@@ -105,7 +105,7 @@ export default function ModernLightHome() {
             </div>
           </div>
           <div className="relative min-h-[280px] md:min-h-full">
-            <img src="/images/hero.jpg" alt="Piney woods in morning fog" className="absolute inset-0 h-full w-full object-cover" />
+            <img src="/images/hero.jpg" alt="Cotton field under a storm sky in rural Mississippi" className="absolute inset-0 h-full w-full object-cover" />
           </div>
         </section>
 
@@ -136,7 +136,7 @@ export default function ModernLightHome() {
         <section id="quality" className="border-t border-neutral-200">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2">
             <div className="overflow-hidden">
-              <img src="/images/band.jpg" alt="Sunlight through the canopy" className="h-80 w-full object-cover" />
+              <img src="/images/band.jpg" alt="Southern magnolia, the Mississippi state flower" className="h-80 w-full object-cover" />
             </div>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-700">Clean water, close to home</p>
@@ -295,6 +295,9 @@ export default function ModernLightHome() {
           <span className="font-serif font-semibold text-neutral-900">{org.name}</span>
           <span className="text-neutral-600">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-neutral-900">{org.phone}</a></span>
           <span className="text-neutral-600">© {waterQuality.reportYear}</span>
+        </div>
+        <div className="mx-auto mt-4 max-w-6xl px-6 text-xs text-neutral-400">
+          Photos: Matthew Nichols (cotton field, Clay County, MS) &amp; Loco Steve (magnolia, Pearl River County, MS) — Wikimedia Commons, CC BY-SA 3.0 / CC BY 3.0
         </div>
       </footer>
     </div>
