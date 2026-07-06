@@ -36,7 +36,7 @@ export default function StaffLogin() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-stone-50 px-5">
-      <form onSubmit={submit} className="w-full max-w-sm border border-neutral-200 bg-white p-8 shadow-sm">
+      <form onSubmit={submit} className="w-full max-w-sm bg-white p-8 shadow-sm">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-700">Staff</p>
         <h1 className="mt-1 font-serif text-2xl font-semibold text-neutral-900">Sign in</h1>
 
@@ -47,7 +47,7 @@ export default function StaffLogin() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1.5 w-full border border-neutral-300 px-3.5 py-2.5 text-neutral-900 outline-none focus:border-neutral-900"
+            className="mt-1.5 w-full bg-stone-100 px-3.5 py-2.5 text-neutral-900 outline-none transition focus:ring-2 focus:ring-cyan-200"
           />
         </label>
         <label className="mt-4 block">
@@ -57,7 +57,7 @@ export default function StaffLogin() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1.5 w-full border border-neutral-300 px-3.5 py-2.5 text-neutral-900 outline-none focus:border-neutral-900"
+            className="mt-1.5 w-full bg-stone-100 px-3.5 py-2.5 text-neutral-900 outline-none transition focus:ring-2 focus:ring-cyan-200"
           />
         </label>
 

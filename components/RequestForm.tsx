@@ -25,7 +25,7 @@ const copy = {
 } as const;
 
 function field() {
-  return "w-full border border-neutral-300 bg-white px-3.5 py-2.5 text-neutral-900 outline-none transition focus:border-neutral-900 placeholder:text-neutral-400";
+  return "w-full bg-stone-100 px-3.5 py-2.5 text-neutral-900 outline-none transition placeholder:text-neutral-400 focus:ring-2 focus:ring-cyan-200";
 }
 
 export default function RequestForm({ kind }: { kind: Kind }) {
@@ -74,7 +74,7 @@ export default function RequestForm({ kind }: { kind: Kind }) {
 
   return (
     <div className="min-h-screen bg-stone-50 text-neutral-700">
-      <header className="border-b border-neutral-200 bg-white shadow-sm">
+      <header className="bg-white shadow-sm">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
           <Link href="/" className="flex items-center gap-2 font-serif text-base font-semibold text-neutral-900">
             <Logo accent="#171717" className="h-7 w-7 shrink-0" />
@@ -88,10 +88,10 @@ export default function RequestForm({ kind }: { kind: Kind }) {
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-700">{c.eyebrow}</p>
         <h1 className="mt-1 font-serif text-4xl font-semibold text-neutral-900">{c.title}</h1>
 
-        <div className="mt-6 border border-neutral-200 bg-white p-6 md:p-8">
+        <div className="mt-6 bg-white p-6 md:p-8">
           {ref ? (
             <div className="text-center">
-              <span className="mx-auto flex h-16 w-16 items-center justify-center border border-neutral-900 text-neutral-900">
+              <span className="mx-auto flex h-16 w-16 items-center justify-center bg-stone-100 text-neutral-900">
                 <CheckIcon className="h-9 w-9" />
               </span>
               <h2 className="mt-4 font-serif text-2xl font-semibold text-neutral-900">{c.done}</h2>
@@ -99,7 +99,7 @@ export default function RequestForm({ kind }: { kind: Kind }) {
               <p className="mt-4 inline-block bg-stone-100 px-4 py-2 text-sm">Reference <strong className="text-neutral-900">{ref}</strong></p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <Link href="/" className="bg-neutral-900 px-5 py-3 font-semibold text-white transition hover:bg-neutral-700">Return to site</Link>
-                <Link href="/pay" className="border border-neutral-300 px-5 py-3 font-semibold text-neutral-700 transition hover:border-neutral-500">Pay My Bill</Link>
+                <Link href="/pay" className="bg-stone-100 px-5 py-3 font-semibold text-neutral-700 transition hover:bg-stone-200">Pay My Bill</Link>
               </div>
             </div>
           ) : (

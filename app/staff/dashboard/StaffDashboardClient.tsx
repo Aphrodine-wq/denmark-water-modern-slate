@@ -107,7 +107,7 @@ export default function StaffDashboardClient({
 
   return (
     <div className="min-h-screen bg-stone-100 text-stone-800">
-      <header className="border-b border-stone-300 bg-white">
+      <header className="bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-stone-500">Denmark Water Association</p>
@@ -115,7 +115,7 @@ export default function StaffDashboardClient({
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-stone-600">Signed in as <strong>{staffName}</strong></span>
-            <button onClick={logout} className="rounded-md border border-stone-300 px-3 py-1.5 text-sm font-semibold text-stone-700 hover:border-stone-900">
+            <button onClick={logout} className="bg-stone-200 px-3 py-1.5 text-sm font-semibold text-stone-700 hover:bg-stone-300">
               Sign out
             </button>
           </div>
@@ -123,10 +123,10 @@ export default function StaffDashboardClient({
       </header>
 
       <main className="mx-auto max-w-5xl px-6 py-10 space-y-10">
-        {error && <p className="rounded-lg border border-red-300 bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p>}
+        {error && <p className="bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p>}
 
         {/* Service notice */}
-        <section className="rounded-2xl border border-stone-300 bg-white p-6">
+        <section className="bg-white p-6">
           <h2 className="font-serif text-lg font-semibold text-stone-900">Service notice banner</h2>
           <p className="mt-1 text-sm text-stone-500">Controls the banner at the top of the public site.</p>
           <label className="mt-4 flex items-center gap-2 text-sm font-medium">
@@ -138,31 +138,31 @@ export default function StaffDashboardClient({
               value={notice.label}
               onChange={(e) => setNotice({ ...notice, label: e.target.value })}
               placeholder="Label (e.g. Service Notice)"
-              className="rounded-lg border border-stone-300 px-3 py-2 text-sm"
+              className="bg-stone-100 px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-stone-300"
             />
             <input
               value={notice.message}
               onChange={(e) => setNotice({ ...notice, message: e.target.value })}
               placeholder="Message"
-              className="rounded-lg border border-stone-300 px-3 py-2 text-sm"
+              className="bg-stone-100 px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-stone-300"
             />
           </div>
           <button
             onClick={saveNotice}
             disabled={savingNotice}
-            className="mt-4 rounded-md bg-stone-900 px-4 py-2 text-sm font-bold text-white hover:bg-stone-700 disabled:opacity-50"
+            className="mt-4 bg-stone-900 px-4 py-2 text-sm font-bold text-white hover:bg-stone-700 disabled:opacity-50"
           >
             {savingNotice ? "Saving…" : "Save notice"}
           </button>
         </section>
 
         {/* Requests */}
-        <section className="rounded-2xl border border-stone-300 bg-white p-6">
+        <section className="bg-white p-6">
           <h2 className="font-serif text-lg font-semibold text-stone-900">Leak & service requests</h2>
           <p className="mt-1 text-sm text-stone-500">Submitted from the public Report-a-Leak and Start/Stop Service forms.</p>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full min-w-[720px] text-left text-sm">
-              <thead className="border-b border-stone-300 text-xs font-semibold uppercase tracking-wide text-stone-500">
+              <thead className="text-xs font-semibold uppercase tracking-wide text-stone-500">
                 <tr>
                   <th className="py-2 pr-4">Ref</th>
                   <th className="py-2 pr-4">Kind</th>
@@ -173,7 +173,7 @@ export default function StaffDashboardClient({
                   <th className="py-2 pr-4">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-200">
+              <tbody className="">
                 {requests.length === 0 && (
                   <tr><td colSpan={7} className="py-6 text-center text-stone-400">No requests yet.</td></tr>
                 )}
@@ -189,7 +189,7 @@ export default function StaffDashboardClient({
                       <select
                         value={r.status}
                         onChange={(e) => setStatus(r.id, e.target.value as RequestStatus)}
-                        className="rounded-md border border-stone-300 px-2 py-1 text-xs font-semibold"
+                        className="bg-stone-100 px-2 py-1 text-xs font-semibold"
                       >
                         {(Object.keys(STATUS_LABEL) as RequestStatus[]).map((s) => (
                           <option key={s} value={s}>{STATUS_LABEL[s]}</option>
@@ -204,7 +204,7 @@ export default function StaffDashboardClient({
         </section>
 
         {/* Documents */}
-        <section className="rounded-2xl border border-stone-300 bg-white p-6">
+        <section className="bg-white p-6">
           <h2 className="font-serif text-lg font-semibold text-stone-900">Water quality & board documents</h2>
           <p className="mt-1 text-sm text-stone-500">Shown on the public site's Documents section — CCR, rate schedule, board minutes, etc.</p>
 
@@ -213,26 +213,26 @@ export default function StaffDashboardClient({
               value={newDoc.title}
               onChange={(e) => setNewDoc({ ...newDoc, title: e.target.value })}
               placeholder="Title (e.g. 2026 CCR)"
-              className="rounded-lg border border-stone-300 px-3 py-2 text-sm"
+              className="bg-stone-100 px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-stone-300"
             />
             <input
               value={newDoc.category}
               onChange={(e) => setNewDoc({ ...newDoc, category: e.target.value })}
               placeholder="Category"
-              className="rounded-lg border border-stone-300 px-3 py-2 text-sm"
+              className="bg-stone-100 px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-stone-300"
             />
             <input
               value={newDoc.url}
               onChange={(e) => setNewDoc({ ...newDoc, url: e.target.value })}
               placeholder="Link to PDF"
-              className="rounded-lg border border-stone-300 px-3 py-2 text-sm"
+              className="bg-stone-100 px-3 py-2 text-sm outline-none transition focus:ring-2 focus:ring-stone-300"
             />
-            <button type="submit" disabled={addingDoc} className="rounded-md bg-stone-900 px-4 py-2 text-sm font-bold text-white hover:bg-stone-700 disabled:opacity-50">
+            <button type="submit" disabled={addingDoc} className="bg-stone-900 px-4 py-2 text-sm font-bold text-white hover:bg-stone-700 disabled:opacity-50">
               Add
             </button>
           </form>
 
-          <ul className="mt-4 divide-y divide-stone-200">
+          <ul className="mt-4">
             {documents.length === 0 && <li className="py-3 text-sm text-stone-400">No documents yet.</li>}
             {documents.map((d) => (
               <li key={d.id} className="flex items-center justify-between gap-3 py-2.5 text-sm">

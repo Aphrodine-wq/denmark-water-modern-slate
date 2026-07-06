@@ -14,7 +14,7 @@ export default function ModernLightPortal() {
 
   return (
     <div className="min-h-screen bg-stone-50 text-neutral-700">
-      <header className="border-b border-neutral-200 bg-white shadow-sm">
+      <header className="bg-white shadow-sm">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-4">
           <Link href="/" className="flex items-center gap-2 font-serif text-sm font-semibold text-neutral-900">
             <Logo accent="#171717" className="h-7 w-7 shrink-0" />
@@ -38,7 +38,7 @@ export default function ModernLightPortal() {
         </p>
 
         {/* Fee disclosure — shown up front so the processor fee is never a surprise. */}
-        <p className="mt-5 border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+        <p className="mt-5 bg-amber-50 px-4 py-3 text-sm text-amber-900">
           <strong>Heads up:</strong> {payment.feeNote}
         </p>
 
@@ -57,7 +57,7 @@ export default function ModernLightPortal() {
 
         {/* DESKTOP — embedded portal with an always-visible new-tab fallback. */}
         <div className="hidden md:block">
-          <div className="mt-6 flex flex-wrap items-center gap-3 border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-700">
+          <div className="mt-6 flex flex-wrap items-center gap-3 bg-white px-4 py-3 text-sm text-neutral-700">
             <ShieldIcon className="h-5 w-5 shrink-0 text-cyan-700" />
             <span className="flex-1">Trouble seeing the payment form below? Open the secure EzPay portal in a new tab.</span>
             <a
@@ -70,7 +70,7 @@ export default function ModernLightPortal() {
             </a>
           </div>
 
-          <div className="relative mt-4 overflow-hidden border border-neutral-200 bg-white">
+          <div className="relative mt-4 overflow-hidden bg-white">
             {!loaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-white">
                 <span className="flex items-center gap-3 text-sm text-neutral-600">
@@ -90,18 +90,18 @@ export default function ModernLightPortal() {
         </div>
 
         {/* Other ways to pay — for members who don't pay online. */}
-        <section className="mt-10 border border-neutral-200 bg-white p-6">
+        <section className="mt-10 bg-white p-6">
           <h2 className="font-serif text-2xl font-semibold text-neutral-900">Other ways to pay</h2>
           <p className="mt-1 text-sm text-neutral-600">Don&apos;t want to pay online? You have options.</p>
           <ul className="mt-4 grid gap-4 sm:grid-cols-2">
             {payment.otherWays.map((w) => (
-              <li key={w.method} className="border border-neutral-200 bg-stone-50 p-4">
+              <li key={w.method} className="bg-stone-50 p-4">
                 <p className="font-semibold text-neutral-900">{w.method}</p>
                 <p className="mt-0.5 text-sm text-neutral-600">{w.detail}</p>
               </li>
             ))}
           </ul>
-          <div className="mt-5 grid gap-2 border-t border-neutral-200 pt-4 text-sm text-neutral-600 sm:grid-cols-3">
+          <div className="mt-5 grid gap-2 pt-4 text-sm text-neutral-600 sm:grid-cols-3">
             <a href={`tel:${org.phone}`} className="flex items-center gap-2 font-semibold text-cyan-700">
               <PhoneIcon className="h-4 w-4" /> {org.phone}
             </a>
