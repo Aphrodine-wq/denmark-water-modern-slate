@@ -78,6 +78,7 @@ export default async function ModernLightHome() {
             <span className="flex items-center gap-2"><ClockIcon className="h-3.5 w-3.5" /> {org.officeHours}</span>
             <a href={`tel:${org.phone}`} className="flex items-center gap-2 font-semibold text-cyan-700"><PhoneIcon className="h-3.5 w-3.5" /> {org.phone}</a>
             <a href={`tel:${org.emergencyPhone}`} className="flex items-center gap-2 font-semibold text-neutral-900">Emergency: {org.emergencyPhone}</a>
+            <Link href="/staff/login" className="font-semibold text-cyan-700 underline underline-offset-2">Staff Sign In</Link>
           </span>
         </div>
       </div>
@@ -363,10 +364,7 @@ export default async function ModernLightHome() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm md:flex-row">
           <span className="font-serif font-semibold text-neutral-900">{org.name}</span>
           <span className="text-neutral-600">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-neutral-900">{org.phone}</a></span>
-          <span className="flex items-center gap-4">
-            <span className="text-neutral-600">© {waterQuality.reportYear}</span>
-            <Link href="/staff/login" className="font-semibold text-neutral-600 underline underline-offset-2 hover:text-neutral-900">Staff Sign In</Link>
-          </span>
+          <span className="text-neutral-600">© {waterQuality.reportYear}</span>
         </div>
         <div className="mx-auto mt-4 max-w-6xl px-6 text-xs text-neutral-400">
           Photos: Matthew Nichols (cotton field, Clay County, MS) &amp; Loco Steve (magnolia, Pearl River County, MS) — Wikimedia Commons, CC BY-SA 3.0 / CC BY 3.0
