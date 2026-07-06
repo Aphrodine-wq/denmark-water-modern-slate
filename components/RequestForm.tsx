@@ -36,13 +36,40 @@ export default function RequestForm({ kind }: { kind: Kind }) {
   const [details, setDetails] = useState("");
   const [type, setType] = useState("Start service");
   const [ref, setRef] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const canSubmit = name.trim() && phone.trim() && address.trim();
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!canSubmit) return;
-    setRef("DWA-" + Math.random().toString(36).slice(2, 7).toUpperCase());
+    if (!canSubmit || submitting) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          kind,
+          name,
+          phone,
+          address,
+          requestType: kind === "service" ? type : undefined,
+          details,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Couldn't submit your request — please call the office instead.");
+        return;
+      }
+      setRef(data.reference);
+    } catch {
+      setError("Couldn't reach the server — check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -111,15 +138,17 @@ export default function RequestForm({ kind }: { kind: Kind }) {
                 </label>
               </div>
 
-              <button type="submit" disabled={!canSubmit} className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-neutral-900 px-6 py-3.5 text-base font-bold text-white transition hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto">
-                {c.submit} <ArrowRightIcon className="h-5 w-5" />
+              {error && <p className="mt-4 text-sm font-semibold text-red-600">{error}</p>}
+
+              <button type="submit" disabled={!canSubmit || submitting} className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-neutral-900 px-6 py-3.5 text-base font-bold text-white transition hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto">
+                {submitting ? "Submitting…" : c.submit} <ArrowRightIcon className="h-5 w-5" />
               </button>
             </form>
           )}
         </div>
 
         <p className="mt-4 flex items-center justify-center gap-2 text-xs text-neutral-600">
-          <ShieldIcon className="h-4 w-4" /> Demo only — this request is not sent anywhere.
+          <ShieldIcon className="h-4 w-4" /> Goes straight to the office — you'll get a call back within one business day.
         </p>
       </main>
     </div>

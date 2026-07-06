@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { org, quickActions, waterQuality, rates, faqs, alertNotice, boardMeetings, leakCheck, boilWater, conservationTips, assistance } from "@/lib/content";
+import { org, quickActions, waterQuality, rates, faqs, alertNotice as staticAlertNotice, boardMeetings, leakCheck, boilWater, conservationTips, assistance } from "@/lib/content";
+import { getNotice, listDocuments } from "@/lib/staffData";
+import { DatabaseNotConfiguredError } from "@/lib/db";
 import {
   PhoneIcon,
   MapPinIcon,
@@ -45,7 +47,16 @@ const mobileLinks = [
 ];
 
 // Light editorial theme — off-white background, near-black type, cyan accent, sharp corners.
-export default function ModernLightHome() {
+export default async function ModernLightHome() {
+  const alertNotice = await getNotice().catch((err) => {
+    if (err instanceof DatabaseNotConfiguredError) return staticAlertNotice;
+    throw err;
+  });
+  const liveDocuments = await listDocuments().catch((err) => {
+    if (err instanceof DatabaseNotConfiguredError) return [];
+    throw err;
+  });
+
   return (
     <div className="min-h-screen bg-stone-50 text-neutral-700">
       {/* Service notice */}
@@ -220,12 +231,15 @@ export default function ModernLightHome() {
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-700">Members</p>
             <h2 className="mt-2 font-serif text-4xl font-semibold text-neutral-900">Documents &amp; reports</h2>
             <div className="mt-8 grid gap-px border border-neutral-200 bg-neutral-200 md:grid-cols-3">
-              {[
-                { t: `${waterQuality.reportYear} Water Quality Report`, s: "Consumer Confidence Report (CCR)" },
-                { t: "Board Meeting Minutes", s: boardMeetings.cadence },
-                { t: "Rate Schedule & Bylaws", s: "Current rates and association bylaws" },
-              ].map((d) => (
-                <a key={d.t} href="#contact" className="group flex items-start gap-4 bg-white p-7 transition hover:bg-stone-50">
+              {(liveDocuments.length > 0
+                ? liveDocuments.map((d) => ({ key: String(d.id), t: d.title, s: d.category, href: d.url }))
+                : [
+                    { key: "ccr", t: `${waterQuality.reportYear} Water Quality Report`, s: "Consumer Confidence Report (CCR)", href: "#contact" },
+                    { key: "minutes", t: "Board Meeting Minutes", s: boardMeetings.cadence, href: "#contact" },
+                    { key: "rates", t: "Rate Schedule & Bylaws", s: "Current rates and association bylaws", href: "#contact" },
+                  ]
+              ).map((d) => (
+                <a key={d.key} href={d.href} target={d.href.startsWith("#") ? undefined : "_blank"} rel={d.href.startsWith("#") ? undefined : "noopener noreferrer"} className="group flex items-start gap-4 bg-white p-7 transition hover:bg-stone-50">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-cyan-50 text-cyan-700 transition group-hover:bg-neutral-900 group-hover:text-white">
                     <DocumentIcon className="h-6 w-6" />
                   </span>
