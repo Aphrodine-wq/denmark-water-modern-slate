@@ -111,16 +111,16 @@ export default async function ModernLightHome() {
           </nav>
           <div className="flex items-center gap-2">
             <Link
-              href="/staff/login"
-              className="hidden px-4 py-2.5 text-sm font-semibold text-neutral-600 transition hover:text-cyan-700 sm:inline-flex"
-            >
-              Staff Sign In
-            </Link>
-            <Link
               href="/pay"
               className="bg-neutral-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-neutral-700"
             >
               Pay My Bill
+            </Link>
+            <Link
+              href="/staff/login"
+              className="hidden px-4 py-2.5 text-sm font-semibold text-neutral-600 transition hover:text-cyan-700 sm:inline-flex"
+            >
+              Staff Sign In
             </Link>
           </div>
         </div>
