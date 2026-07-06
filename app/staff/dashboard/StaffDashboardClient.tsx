@@ -10,6 +10,13 @@ const STATUS_LABEL: Record<RequestStatus, string> = {
   done: "Done",
 };
 
+const TABS = [
+  { key: "notice", label: "Service notice" },
+  { key: "requests", label: "Requests" },
+  { key: "documents", label: "Documents" },
+] as const;
+type TabKey = (typeof TABS)[number]["key"];
+
 export default function StaffDashboardClient({
   staffName,
   initialNotice,
@@ -22,6 +29,7 @@ export default function StaffDashboardClient({
   initialDocuments: DocumentRow[];
 }) {
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState<TabKey>("notice");
   const [requests, setRequests] = useState(initialRequests);
   const [notice, setNotice] = useState(initialNotice);
   const [documents, setDocuments] = useState(initialDocuments);
@@ -122,10 +130,30 @@ export default function StaffDashboardClient({
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-6 py-10 space-y-10">
+      <div className="mx-auto flex max-w-5xl items-start gap-8 px-6 py-10">
+        <aside className="w-52 shrink-0">
+          <nav className="space-y-1">
+            {TABS.map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`block w-full px-3.5 py-2.5 text-left text-sm font-semibold transition ${
+                  activeTab === tab.key
+                    ? "bg-white text-stone-900 shadow-sm"
+                    : "text-stone-600 hover:bg-white/60 hover:text-stone-900"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </nav>
+        </aside>
+
+        <main className="min-w-0 flex-1 space-y-10">
         {error && <p className="bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p>}
 
         {/* Service notice */}
+        {activeTab === "notice" && (
         <section className="bg-white p-6">
           <h2 className="font-serif text-lg font-semibold text-stone-900">Service notice banner</h2>
           <p className="mt-1 text-sm text-stone-500">Controls the banner at the top of the public site.</p>
@@ -155,8 +183,10 @@ export default function StaffDashboardClient({
             {savingNotice ? "Saving…" : "Save notice"}
           </button>
         </section>
+        )}
 
         {/* Requests */}
+        {activeTab === "requests" && (
         <section className="bg-white p-6">
           <h2 className="font-serif text-lg font-semibold text-stone-900">Leak & service requests</h2>
           <p className="mt-1 text-sm text-stone-500">Submitted from the public Report-a-Leak and Start/Stop Service forms.</p>
@@ -202,8 +232,10 @@ export default function StaffDashboardClient({
             </table>
           </div>
         </section>
+        )}
 
         {/* Documents */}
+        {activeTab === "documents" && (
         <section className="bg-white p-6">
           <h2 className="font-serif text-lg font-semibold text-stone-900">Water quality & board documents</h2>
           <p className="mt-1 text-sm text-stone-500">Shown on the public site's Documents section — CCR, rate schedule, board minutes, etc.</p>
@@ -245,7 +277,9 @@ export default function StaffDashboardClient({
             ))}
           </ul>
         </section>
-      </main>
+        )}
+        </main>
+      </div>
     </div>
   );
 }
