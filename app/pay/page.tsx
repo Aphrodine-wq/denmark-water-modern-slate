@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { org, payment } from "@/lib/content";
-import { CardIcon, ShieldIcon, ArrowRightIcon, PhoneIcon, MapPinIcon, ClockIcon } from "@/components/icons";
+import { CardIcon, ShieldIcon, ArrowRightIcon, PhoneIcon, MapPinIcon, ClockIcon, Logo } from "@/components/icons";
 
 // Light editorial payment portal — off-white, near-black, cyan accent, sharp corners.
 // On desktop the BBI EzPay portal is embedded; on phones we open it full-screen
@@ -16,7 +16,10 @@ export default function ModernLightPortal() {
     <div className="min-h-screen bg-stone-50 text-neutral-700">
       <header className="border-b border-neutral-200 bg-white">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-4">
-          <Link href="/" className="font-serif text-sm font-semibold text-neutral-900">{org.name}</Link>
+          <Link href="/" className="flex items-center gap-2 font-serif text-sm font-semibold text-neutral-900">
+            <Logo accent="#171717" className="h-7 w-7 shrink-0" />
+            {org.name}
+          </Link>
           <a href={`tel:${org.phone}`} className="flex items-center gap-1.5 text-sm font-semibold text-cyan-700">
             <PhoneIcon className="h-4 w-4" /> {org.phone}
           </a>

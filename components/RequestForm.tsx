@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { org } from "@/lib/content";
-import { CheckIcon, ArrowRightIcon, ShieldIcon } from "@/components/icons";
+import { CheckIcon, ArrowRightIcon, ShieldIcon, Logo } from "@/components/icons";
 
 type Kind = "leak" | "service";
 
@@ -49,7 +49,10 @@ export default function RequestForm({ kind }: { kind: Kind }) {
     <div className="min-h-screen bg-stone-50 text-neutral-700">
       <header className="border-b border-neutral-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-4">
-          <Link href="/" className="font-serif text-base font-semibold text-neutral-900">{org.name}</Link>
+          <Link href="/" className="flex items-center gap-2 font-serif text-base font-semibold text-neutral-900">
+            <Logo accent="#171717" className="h-7 w-7 shrink-0" />
+            {org.name}
+          </Link>
           <Link href="/" className="text-sm text-neutral-600 hover:text-neutral-900">← Back to site</Link>
         </div>
       </header>

@@ -21,7 +21,7 @@ export const org = {
 } as const;
 
 export const alertNotice = {
-  active: true,
+  active: false,
   label: "Service Notice",
   message:
     "Routine hydrant flushing in the North district runs June 30 – July 3. You may notice temporary discoloration; run cold water a few minutes to clear it.",

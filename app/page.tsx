@@ -9,6 +9,7 @@ import {
   CheckIcon,
   LeakIcon,
   ShieldIcon,
+  Logo,
   quickActionIcon,
 } from "@/components/icons";
 
@@ -51,7 +52,10 @@ export default function ModernLightHome() {
       {/* Header */}
       <header className="sticky top-0 z-30 border-b border-neutral-200 bg-stone-50/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="font-serif text-xl font-semibold text-neutral-900">{org.name}</Link>
+          <Link href="/" className="flex items-center gap-2.5 font-serif text-xl font-semibold text-neutral-900">
+            <Logo accent="#171717" className="h-9 w-9 shrink-0" />
+            {org.name}
+          </Link>
           <nav className="hidden items-center gap-9 lg:flex">
             {nav.map((n) => (
               <a key={n.label} href={n.href} className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900">
@@ -61,9 +65,9 @@ export default function ModernLightHome() {
           </nav>
           <Link
             href="/pay"
-            className="inline-flex items-center gap-2 bg-neutral-900 px-6 py-3 text-base font-bold text-white transition hover:bg-neutral-700"
+            className="bg-neutral-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-neutral-700"
           >
-            Pay My Bill <ArrowRightIcon className="h-5 w-5" />
+            Pay My Bill
           </Link>
         </div>
       </header>
@@ -281,8 +285,8 @@ export default function ModernLightHome() {
                 <h2 className="font-serif text-4xl font-semibold text-neutral-900">Ready to pay your bill?</h2>
                 <p className="mt-2 max-w-sm text-neutral-600">Have your account number ready. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-cyan-700 underline-offset-2 hover:underline">{org.phone}</a>.</p>
               </div>
-              <Link href="/pay" className="inline-flex items-center gap-2.5 bg-neutral-900 px-10 py-5 text-xl font-bold text-white transition hover:bg-neutral-700">
-                Pay My Bill <ArrowRightIcon className="h-6 w-6" />
+              <Link href="/pay" className="border-2 border-neutral-900 bg-neutral-900 px-9 py-4 text-lg font-bold text-white transition hover:bg-neutral-700">
+                Pay My Bill
               </Link>
             </div>
           </div>

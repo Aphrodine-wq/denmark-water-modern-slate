@@ -127,3 +127,15 @@ export const quickActionIcon = {
   leak: LeakIcon,
   service: TransferIcon,
 } as const;
+
+// Denmark Water Association mark — a droplet badge with a ripple line.
+// `accent` is the badge fill; the droplet is always knocked out in white.
+export function Logo({ accent, className }: { accent: string; className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={className} role="img" aria-label="Denmark Water Association">
+      <circle cx="50" cy="50" r="48" fill={accent} />
+      <path d="M50,26 C50,26 29,53 29,67 A21,21 0 0 0 71,67 C71,53 50,26 50,26 Z" fill="#fff" />
+      <path d="M31,68 Q40.5,62 50,68 T69,68" stroke={accent} strokeWidth="3.5" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
