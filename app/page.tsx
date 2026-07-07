@@ -62,7 +62,7 @@ export default async function ModernLightHome() {
       {/* Service notice */}
       {alertNotice.active && (
         <div className="bg-neutral-900 text-neutral-100">
-          <div className="mx-auto flex max-w-6xl items-start gap-3 px-6 py-2.5 text-sm">
+          <div className="mx-auto flex max-w-6xl items-start gap-3 px-6 py-3.5 text-sm">
             <span className="mt-0.5 text-xs font-bold uppercase tracking-[0.15em] text-cyan-400">{alertNotice.label}</span>
             <p className="text-neutral-300">{alertNotice.message}</p>
           </div>
@@ -258,14 +258,14 @@ export default async function ModernLightHome() {
           <div className="mx-auto max-w-4xl px-6 py-20">
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-700">Questions</p>
             <h2 className="mt-2 font-serif text-4xl font-semibold text-neutral-900">Frequently asked</h2>
-            <div className="mt-8">
+            <div className="mt-8 divide-y divide-neutral-200">
               {faqs.map((f) => (
                 <details key={f.q} className="group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between py-5 font-serif text-lg font-medium text-neutral-900">
+                  <summary className="flex cursor-pointer list-none items-center justify-between py-6 font-serif text-lg font-medium text-neutral-900">
                     {f.q}
                     <span className="text-cyan-700 transition group-open:rotate-45">+</span>
                   </summary>
-                  <p className="pb-5 text-sm text-neutral-600">{f.a}</p>
+                  <p className="pb-6 text-sm text-neutral-600">{f.a}</p>
                 </details>
               ))}
             </div>
