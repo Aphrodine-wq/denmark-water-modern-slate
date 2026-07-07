@@ -118,10 +118,6 @@ export const faqs: { q: string; a: string }[] = [
     a: "Bills are mailed at the start of each month and are due by the 20th. A late penalty is added after the due date.",
   },
   {
-    q: "How do I find my account number?",
-    a: "It's printed at the top of your paper bill, just above your service address. You'll need it to pay online.",
-  },
-  {
     q: "What are all the ways I can pay?",
     a: "Online by card or e-check through the BBI EzPay portal, in person with cash or check, by mail, by phone during office hours, or in the after-hours drop box. Autopay and paperless billing can be set up in the portal.",
   },
@@ -134,24 +130,8 @@ export const faqs: { q: string; a: string }[] = [
     a: "Bring tap water to a rolling boil for one full minute before drinking, cooking, making ice, brushing teeth, or washing produce. Let it cool before use. We'll post the notice here and let you know the moment it's lifted.",
   },
   {
-    q: "Why is my water cloudy or discolored?",
-    a: "It's usually temporary after hydrant flushing or a repair. Run a cold tap for a few minutes to clear it. If it doesn't clear, or there's an odor, call the office.",
-  },
-  {
     q: "How do I start, stop, or transfer service?",
     a: "Use the Start / Stop Service form or call the office. New accounts need a photo ID, the service address, and a refundable deposit.",
-  },
-  {
-    q: "What happens if I pay late?",
-    a: "A late penalty is added after the 20th. If the balance stays unpaid, service may be disconnected, and a reconnection fee applies to restore it — so call us before the due date if you're behind.",
-  },
-  {
-    q: "Is help available if I can't afford my bill?",
-    a: "You may qualify for the Low Income Household Water Assistance Program (LIHWAP) or local aid. Call the office before your due date and we'll point you to current programs.",
-  },
-  {
-    q: "Is my water safe to drink?",
-    a: `Yes. We test continuously for bacteria, lead, nitrates, and disinfection levels and publish the results each year in our Consumer Confidence Report. The most recent ${waterQuality.reportYear} report shows zero violations.`,
   },
   {
     q: "How do I report a leak or main break?",
