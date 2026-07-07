@@ -137,9 +137,10 @@ export default async function ModernLightHome() {
 
       <main id="main">
         {/* Split hero */}
-        <section className="mx-auto grid max-w-7xl items-stretch gap-0 md:grid-cols-2">
+        <section className="mx-auto grid max-w-7xl items-stretch gap-0 md:grid-cols-[0.85fr_1.15fr]">
           <div className="flex flex-col justify-center px-6 py-16 md:px-12 md:py-28">
-            <h1 className="font-serif text-5xl font-semibold leading-[1.02] tracking-tight text-neutral-900 md:text-6xl">
+            <div className="h-1 w-14 bg-cyan-600" />
+            <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.02] tracking-tight text-neutral-900 md:text-6xl">
               {org.tagline}
             </h1>
             <div className="mt-8 flex flex-wrap items-center gap-4">
