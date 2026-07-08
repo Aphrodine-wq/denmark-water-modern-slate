@@ -83,9 +83,12 @@ export default async function ModernLightHome() {
       {/* Header */}
       <header className="sticky top-0 z-30 bg-stone-50/90 shadow-sm backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2.5 font-serif text-xl font-semibold text-neutral-900">
-            <Logo accent="#171717" className="h-9 w-9 shrink-0" />
-            {org.name}
+          <Link href="/" className="flex min-w-0 items-center gap-2.5 font-serif text-lg font-semibold text-neutral-900 sm:text-xl">
+            <Logo accent="#171717" className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
+            <span className="truncate">
+              <span className="sm:hidden">{org.shortName}</span>
+              <span className="hidden sm:inline">{org.name}</span>
+            </span>
           </Link>
           <nav className="hidden items-center gap-1 lg:flex">
             {navGroups.map((group) => (
@@ -106,10 +109,10 @@ export default async function ModernLightHome() {
               Contact
             </a>
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <Link
               href="/pay"
-              className="bg-neutral-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-neutral-700"
+              className="whitespace-nowrap bg-neutral-900 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-neutral-700 sm:px-5 sm:py-2.5 sm:text-sm"
             >
               Pay My Bill
             </Link>

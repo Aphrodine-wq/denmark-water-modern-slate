@@ -116,7 +116,7 @@ export default function StaffDashboardClient({
   return (
     <div className="min-h-screen bg-stone-100 text-stone-800">
       <header className="bg-white">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-6 py-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-stone-500">Denmark Water Association</p>
             <h1 className="font-serif text-xl font-semibold text-stone-900">Staff dashboard</h1>
@@ -130,14 +130,14 @@ export default function StaffDashboardClient({
         </div>
       </header>
 
-      <div className="mx-auto flex max-w-5xl items-start gap-8 px-6 py-10">
-        <aside className="w-52 shrink-0">
-          <nav className="space-y-1">
+      <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-10 md:flex-row md:items-start md:gap-8">
+        <aside className="md:w-52 md:shrink-0">
+          <nav className="flex gap-1 overflow-x-auto md:block md:space-y-1">
             {TABS.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`block w-full px-3.5 py-2.5 text-left text-sm font-semibold transition ${
+                className={`shrink-0 px-3.5 py-2.5 text-left text-sm font-semibold transition md:block md:w-full ${
                   activeTab === tab.key
                     ? "bg-white text-stone-900 shadow-sm"
                     : "text-stone-600 hover:bg-white/60 hover:text-stone-900"
