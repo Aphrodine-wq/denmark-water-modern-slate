@@ -14,6 +14,7 @@ import {
   ShieldIcon,
   Logo,
 } from "@/components/icons";
+import { MobileNav } from "@/components/MobileNav";
 
 const actionHref: Record<string, string> = { pay: "/pay", leak: "/report-leak", service: "/start-stop" };
 
@@ -122,6 +123,7 @@ export default async function ModernLightHome() {
             >
               Staff Sign In
             </Link>
+            <MobileNav orgShortName={org.shortName} phone={org.phone} navGroups={navGroups} />
           </div>
         </div>
       </header>
