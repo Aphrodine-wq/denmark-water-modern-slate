@@ -352,6 +352,12 @@ export default async function ModernLightHome() {
         <div className="mx-auto mt-4 max-w-6xl px-6 text-xs text-neutral-400">
           Photos: Matthew Nichols (cotton field, Clay County, MS) &amp; Loco Steve (magnolia, Pearl River County, MS) — Wikimedia Commons, CC BY-SA 3.0 / CC BY 3.0
         </div>
+        <div className="mx-auto mt-2 max-w-6xl px-6 text-xs text-neutral-400">
+          Site by{" "}
+          <a href="https://waltburge.com" target="_blank" rel="noopener" className="underline-offset-2 hover:text-neutral-600 hover:underline">
+            Walt Builds
+          </a>
+        </div>
       </footer>
     </div>
   );
