@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { org, payment } from "@/lib/content";
 import { CardIcon, ShieldIcon, ArrowRightIcon, PhoneIcon, MapPinIcon, ClockIcon, Logo } from "@/components/icons";
 
 // Light editorial payment portal — off-white, near-black, cyan accent, sharp corners.
-// On desktop the BBI EzPay portal is embedded; on phones we open it full-screen
-// instead of cramming an external app into a tiny iframe. Fee disclosure + offline
-// payment options are always shown. Swap org.ezpayUrl when BBI confirms the link.
+// EzPay is a standalone app that can't be deep-linked to a single association or
+// cleanly embedded, so we link out to it in a new tab rather than iframe it. Fee
+// disclosure + offline payment options are always shown.
 export default function ModernLightPortal() {
-  const [loaded, setLoaded] = useState(false);
-
   return (
     <div className="min-h-screen bg-stone-50 text-neutral-700">
       <header className="bg-white shadow-sm">
@@ -42,51 +39,19 @@ export default function ModernLightPortal() {
           <strong>Heads up:</strong> {payment.feeNote}
         </p>
 
-        {/* MOBILE — open EzPay full-screen instead of a cramped iframe. */}
-        <div className="mt-6 md:hidden">
+        {/* Primary CTA — open EzPay in a new tab. */}
+        <div className="mt-6 bg-white p-6">
           <a
             href={org.ezpayUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex w-full items-center justify-center gap-2 bg-neutral-900 px-5 py-4 text-lg font-bold text-white transition hover:bg-neutral-700"
           >
-            Open the EzPay payment portal <ArrowRightIcon className="h-5 w-5" />
+            Pay my bill with EzPay <ArrowRightIcon className="h-5 w-5" />
           </a>
-          <p className="mt-2 text-center text-xs text-neutral-600">Opens your secure payment page in a new tab.</p>
-        </div>
-
-        {/* DESKTOP — embedded portal with an always-visible new-tab fallback. */}
-        <div className="hidden md:block">
-          <div className="mt-6 flex flex-wrap items-center gap-3 bg-white px-4 py-3 text-sm text-neutral-700">
-            <ShieldIcon className="h-5 w-5 shrink-0 text-cyan-700" />
-            <span className="flex-1">Trouble seeing the payment form below? Open the secure EzPay portal in a new tab.</span>
-            <a
-              href={org.ezpayUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-neutral-900 px-4 py-2 font-semibold text-white transition hover:bg-neutral-700"
-            >
-              Open EzPay <ArrowRightIcon className="h-4 w-4" />
-            </a>
-          </div>
-
-          <div className="relative mt-4 overflow-hidden bg-white">
-            {!loaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-white">
-                <span className="flex items-center gap-3 text-sm text-neutral-600">
-                  <span className="h-5 w-5 animate-spin rounded-full border-2 border-neutral-300 border-t-cyan-700" />
-                  Loading secure payment portal…
-                </span>
-              </div>
-            )}
-            <iframe
-              src={org.ezpayUrl}
-              title="BBI EzPay — secure bill payment"
-              onLoad={() => setLoaded(true)}
-              className="h-[820px] w-full"
-              allow="payment"
-            />
-          </div>
+          <p className="mt-3 flex items-center justify-center gap-2 text-center text-xs text-neutral-600">
+            <ShieldIcon className="h-4 w-4 text-cyan-700" /> Opens your secure EzPay payment page in a new tab.
+          </p>
         </div>
 
         {/* Other ways to pay — for members who don't pay online. */}
