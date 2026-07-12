@@ -73,11 +73,6 @@ export default function ModernLightPortal() {
             <span className="flex items-center gap-2"><ClockIcon className="h-4 w-4 text-neutral-400" /> {org.officeHours}</span>
           </div>
         </section>
-
-        <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-neutral-600">
-          <ShieldIcon className="h-4 w-4" /> Payments are securely processed by BBI EzPay.{" "}
-          {org.shortName} never sees or stores your card or bank details.
-        </p>
       </main>
     </div>
   );
