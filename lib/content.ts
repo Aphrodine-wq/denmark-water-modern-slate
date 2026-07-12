@@ -14,10 +14,9 @@ export const org = {
   address: "112 Main Street, Denmark, MS 39071",
   officeHours: "Mon–Fri, 8:00 AM – 5:00 PM",
   membersServed: "2,400+ households",
-  // BBI EzPay hosted bill-pay portal. SWAP for Denmark Water's entity-specific
-  // EzPay link once BBI confirms it (ask BBI for the direct billing-entity URL).
+  // BBI EzPay hosted bill-pay portal — Denmark Water's confirmed entity-specific link.
   // The Pay My Bill page embeds this URL in an iframe + offers it as a new-tab link.
-  ezpayUrl: "https://www.msezpay.com/",
+  ezpayUrl: "https://msezpay.com/#!/water",
 } as const;
 
 export const alertNotice = {
