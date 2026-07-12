@@ -12,7 +12,6 @@ import {
   CheckIcon,
   LeakIcon,
   ShieldIcon,
-  Logo,
 } from "@/components/icons";
 import { MobileNav } from "@/components/MobileNav";
 
@@ -84,12 +83,8 @@ export default async function ModernLightHome() {
       {/* Header */}
       <header className="sticky top-0 z-30 bg-stone-50/90 shadow-sm backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="flex min-w-0 items-center gap-2.5 font-serif text-lg font-semibold text-neutral-900 sm:text-xl">
-            <Logo accent="#171717" className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
-            <span className="truncate">
-              <span className="sm:hidden">{org.shortName}</span>
-              <span className="hidden sm:inline">{org.name}</span>
-            </span>
+          <Link href="/" className="flex min-w-0 items-center">
+            <img src="/dwa-logo.svg" alt={org.name} className="h-11 w-auto shrink-0 sm:h-12" />
           </Link>
           <nav className="hidden items-center gap-1 lg:flex">
             {navGroups.map((group) => (

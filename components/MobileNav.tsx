@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Logo, MenuIcon, CloseIcon, PhoneIcon, ArrowRightIcon } from "@/components/icons";
+import { MenuIcon, CloseIcon, PhoneIcon, ArrowRightIcon } from "@/components/icons";
 
 interface NavGroup {
   label: string;
@@ -59,10 +59,9 @@ export function MobileNav({
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 font-serif text-lg font-semibold text-neutral-900"
+                className="flex items-center"
               >
-                <Logo accent="#171717" className="h-8 w-8 shrink-0" />
-                {orgShortName}
+                <img src="/dwa-logo.svg" alt={orgShortName} className="h-10 w-auto shrink-0" />
               </Link>
               <button
                 type="button"
