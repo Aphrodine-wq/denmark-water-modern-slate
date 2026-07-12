@@ -29,9 +29,8 @@ export default function ModernLightPortal() {
         </div>
         <h1 className="font-serif text-4xl font-semibold text-neutral-900">Online payment portal</h1>
         <p className="mt-3 max-w-2xl text-neutral-600">
-          Pay your water bill securely with <strong className="text-neutral-900">BBI EzPay</strong>, our
-          billing provider. Have the account number from your most recent bill ready — it&apos;s
-          printed at the top of your bill, just above your service address.
+          Pay securely through <strong className="text-neutral-900">BBI EzPay</strong>. Have your
+          account number ready — it&apos;s on your latest bill.
         </p>
 
         {/* Fee disclosure — shown up front so the processor fee is never a surprise. */}

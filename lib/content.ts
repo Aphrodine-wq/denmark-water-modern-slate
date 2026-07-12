@@ -181,7 +181,7 @@ export const assistance = {
 // the Pay My Bill page so the fee is never a surprise (the #1 utility complaint).
 export const payment = {
   feeNote:
-    "Paying by card or e-check adds a small processor fee set by our bill-pay provider (BBI EzPay). The exact amount is shown before you confirm, and Denmark Water keeps none of it.",
+    "Card and e-check payments add a small processor fee, shown before you confirm.",
   otherWays: [
     { method: "In person", detail: "Cash or check at the office during office hours." },
     { method: "By mail", detail: "Mail a check to the office address. Allow 3–5 business days." },
