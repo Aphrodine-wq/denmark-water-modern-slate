@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { org, payment } from "@/lib/content";
 import { CardIcon, ShieldIcon, ArrowRightIcon, PhoneIcon, MapPinIcon, ClockIcon, Logo } from "@/components/icons";
@@ -9,6 +10,8 @@ import { CardIcon, ShieldIcon, ArrowRightIcon, PhoneIcon, MapPinIcon, ClockIcon,
 // cleanly embedded, so we link out to it in a new tab rather than iframe it. Fee
 // disclosure + offline payment options are always shown.
 export default function ModernLightPortal() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <div className="min-h-screen bg-stone-50 text-neutral-700">
       <header className="bg-white shadow-sm">
@@ -51,6 +54,25 @@ export default function ModernLightPortal() {
           <p className="mt-3 flex items-center justify-center gap-2 text-center text-xs text-neutral-600">
             <ShieldIcon className="h-4 w-4 text-cyan-700" /> Opens your secure EzPay payment page in a new tab.
           </p>
+        </div>
+
+        {/* Embedded EzPay portal. */}
+        <div className="relative mt-6 overflow-hidden bg-white">
+          {!loaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white">
+              <span className="flex items-center gap-3 text-sm text-neutral-600">
+                <span className="h-5 w-5 animate-spin rounded-full border-2 border-neutral-300 border-t-cyan-700" />
+                Loading secure payment portal…
+              </span>
+            </div>
+          )}
+          <iframe
+            src={org.ezpayUrl}
+            title="BBI EzPay — secure bill payment"
+            onLoad={() => setLoaded(true)}
+            className="h-[820px] w-full"
+            allow="payment"
+          />
         </div>
 
         {/* Other ways to pay — for members who don't pay online. */}
