@@ -349,7 +349,7 @@ export default async function ModernLightHome() {
         </div>
         <div className="mx-auto mt-2 max-w-6xl px-6 text-xs text-neutral-400">
           Site by{" "}
-          <a href="https://waltburge.com" target="_blank" rel="noopener" className="underline-offset-2 hover:text-neutral-600 hover:underline">
+          <a href="https://waltbuilds.com" target="_blank" rel="noopener" className="underline-offset-2 hover:text-neutral-600 hover:underline">
             Walt Builds
           </a>
         </div>
